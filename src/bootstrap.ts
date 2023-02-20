@@ -9,7 +9,7 @@ export const bootstrap = async (
   browserName: string,
   { seed, password, showTestNets, ...launchOptions }: OfficialOptions & WalletOptions,
 ): Promise<[Dappwright, Page, BrowserContext]> => {
-  fs.rmSync(path.join(sessionPath, launchOptions.wallet), { recursive: true, force: true });
+  fs.rmdirSync(path.join(sessionPath, launchOptions.wallet), { recursive: true });
   const { browserContext } = await launch(browserName, launchOptions);
   const wallet = await getWallet(launchOptions.wallet, browserContext);
   await wallet.setup({ seed, password, showTestNets });
