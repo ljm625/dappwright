@@ -14,7 +14,10 @@ export const bootstrap = async (
   browserName: string,
   { seed, password, showTestNets, ...launchOptions }: OfficialOptions & WalletOptions,
 ): Promise<[Dappwright, Page, BrowserContext]> => {
-  fs.rmdirSync('./metamaskSession', { recursive: true });
+  if (fs.existsSync('./metamaskSession')) {
+    fs.rmdirSync('./metamaskSession', { recursive: true });
+  }
+  
   const browserContext = await launch(browserName, launchOptions);
   const dappwright = await setupMetamask(browserContext, { seed, password, showTestNets });
   const pages = await browserContext.pages();
