@@ -13,8 +13,13 @@ export const bootstrap = async (
   fs.rmdirSync(path.join(sessionPath, launchOptions.wallet), { recursive: true });
   }
   const { browserContext } = await launch(browserName, launchOptions);
-  const wallet = await getWallet(launchOptions.wallet, browserContext);
-  await wallet.setup({ seed, password, showTestNets });
+  try{
+    const wallet = await getWallet(launchOptions.wallet, browserContext);
+    await wallet.setup({ seed, password, showTestNets });  
+    return [wallet, wallet.page, browserContext];
+  } catch (e){
+    await browserContext.close();
+    throw e;
+  }
 
-  return [wallet, wallet.page, browserContext];
 };
