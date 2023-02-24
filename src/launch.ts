@@ -21,6 +21,7 @@ export async function launch(browserName: string, options: OfficialOptions): Pro
     path.join(sessionPath, officialOptions.wallet),
     {
       headless: headless ?? false,
+      viewport : null,
       args: [`--disable-extensions-except=${extensionPath}`, `--load-extension=${extensionPath}`, `--start-maximized`],
     },
   );
