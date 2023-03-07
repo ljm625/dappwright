@@ -17,7 +17,7 @@ export type OfficialOptions = DappwrightBrowserLaunchArgumentOptions & {
   wallet: WalletIdOptions;
   version: 'latest' | string;
   headless?: boolean;
-  viewpoint?: {
+  viewport?: {
     width: number,
     height: number,
   }

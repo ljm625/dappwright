@@ -6,11 +6,11 @@ export declare class CoinbaseWallet extends Wallet {
     static releasesUrl: string;
     static homePath: string;
     options: WalletOptions;
-    static download: (options: import("../..").OfficialOptions) => Promise<string>;
+    static download: (options: import("@tenkeylabs/dappwright/src").OfficialOptions) => Promise<string>;
     defaultSetupSteps: Step<WalletOptions>[];
     setup: <Options = WalletOptions>(options?: Options, steps?: Step<Options>[]) => Promise<void>;
-    addNetwork: (options: import("../..").AddNetwork) => Promise<void>;
-    addToken: (_: import("../..").AddToken) => Promise<void>;
+    addNetwork: (options: import("@tenkeylabs/dappwright/src").AddNetwork) => Promise<void>;
+    addToken: (_: import("@tenkeylabs/dappwright/src").AddToken) => Promise<void>;
     approve: () => Promise<void>;
     createAccount: () => Promise<void>;
     confirmNetworkSwitch: () => Promise<void>;

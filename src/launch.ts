@@ -11,7 +11,8 @@ import { getWallet, getWalletType } from './wallets/wallets';
 export const sessionPath = path.resolve(os.tmpdir(), 'dappwright', 'session');
 
 export async function launch(browserName: string, options: OfficialOptions): Promise<DappwrightLaunchResponse> {
-  const { headless,viewpoint, ...officialOptions } = options;
+  const { headless,viewport, ...officialOptions } = options;
+  console.log(viewport);
   const wallet = getWalletType(officialOptions.wallet);
   if (!wallet) throw new Error('Wallet not supported');
 
@@ -21,7 +22,7 @@ export async function launch(browserName: string, options: OfficialOptions): Pro
     path.join(sessionPath, officialOptions.wallet),
     {
       headless: headless ?? false,
-      viewport : viewpoint?? {width:1280,height:720},
+      viewport : viewport?? {width:1280,height:720},
       args: [`--disable-extensions-except=${extensionPath}`, `--load-extension=${extensionPath}`, `--start-maximized`],
     },
   );
