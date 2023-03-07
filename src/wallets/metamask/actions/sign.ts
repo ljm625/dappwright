@@ -6,6 +6,7 @@ import { performPopupAction } from './util';
 
 export const sign = (page: Page) => async (): Promise<void> => {
   await performPopupAction(page, async (popup) => {
+    console.log(popup.url())
     await popup.bringToFront();
     await popup.reload();
     await popup.waitForSelector("div")

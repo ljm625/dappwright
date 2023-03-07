@@ -18,6 +18,6 @@ export const approve = (page: Page) => async (): Promise<void> => {
 
     // Wait and close
     await waitForChromeState(page);
-    await popup.close();
+    // await popup.close();
   });
 };
